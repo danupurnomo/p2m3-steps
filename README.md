@@ -80,4 +80,33 @@ Step by step pengerjaan Milestone 3 :
 
 7. Masukkan `raw_data.csv` ke dalam PostgreSQL. Silakan buat sintaks DDL & DML-nya.
 
-8. 
+8. Untuk mengakses suatu service baik dari sisi user (developer) maupun dari sisi service lain, silakan buka `airflow_ES.yaml`. Perhatikan bagian `services`
+    * Contoh dibawah ini adalah bagian `postgres`
+      ```
+      postgres:
+        image: postgres:13
+        container_name: postgres
+        ports:
+          - "5434:5432"
+        healthcheck:
+          test: ["CMD", "pg_isready", "-U", "airflow"]
+          interval: 5s
+          retries: 5
+        env_file:
+          - .env
+      ```
+
+    * Hostname
+      - Jika user (developer) ingin mengakses service `postgres` ini, maka masukkan `localhost` sebagai hostname-nya.
+      - Jika suatu service (misalka `Apache Airflow`) ingin mengakses service `postgres` ini, masukkan nama servicenya yaitu `postgres`.
+
+    * Port
+      - Tertulis 
+        ```
+        ports:
+          - "5434:5432"
+        ```
+      - Angka sebelum titik dua (`:`) yaitu `5434` adalah port yang bisa dipakai oleh seorang user (developer).
+      - Angka setelah titik dua (`:`) yaitu `5432` adalah port yang bisa dipakai oleh suatu service (Apache Airflow).
+
+    * Lakukan konfigurasi sesuai denga paduang `Hostname` dan `Port` diatas untuk service `Apache Airflow`, `Elasticsearch`, dan `PostgreSQL`.
