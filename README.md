@@ -9,7 +9,7 @@ Step by step pengerjaan Milestone 3 :
 
 1. Clone repository https://github.com/ardhiraka/DEBlitz
 
-2. Buat sebuah folder baru di local computer, misalkan "project-m3".
+2. Buat sebuah folder baru di local computer, misalkan **project-m3**.
 
 3. Copy dua buah file yaitu `.env` dan `airflow_ES.yaml` yang berada pada repository yang baru saja Anda clone pada path `DEBlitz/compose_file/airflow/` ke dalam folder baru tadi yang berada di local computer (folder "project-m3").
 
@@ -109,4 +109,4 @@ Step by step pengerjaan Milestone 3 :
       - Angka sebelum titik dua (`:`) yaitu `5434` adalah port yang bisa dipakai oleh seorang user (developer).
       - Angka setelah titik dua (`:`) yaitu `5432` adalah port yang bisa dipakai oleh suatu service (Apache Airflow).
 
-    * Lakukan konfigurasi sesuai denga paduang `Hostname` dan `Port` diatas untuk service `Apache Airflow`, `Elasticsearch`, dan `PostgreSQL`.
+    * Lakukan konfigurasi sesuai dengan panduan `Hostname` dan `Port` diatas untuk service `Apache Airflow`, `Elasticsearch`, dan `PostgreSQL`.
