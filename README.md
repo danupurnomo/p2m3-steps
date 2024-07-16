@@ -7,11 +7,17 @@
 ## Steps
 Step by step pengerjaan Milestone 3 : 
 
-1. Clone repository https://github.com/ardhiraka/DEBlitz
+1. Buat sebuah folder baru di local computer, misalkan **project-m3**.
 
-2. Buat sebuah folder baru di local computer, misalkan **project-m3**.
+2. Pastikan Anda sudah melakukan clone repository https://github.com/ardhiraka/DEBlitz.
 
-3. Copy dua buah file yaitu `.env` dan `airflow_ES.yaml` yang berada pada repository yang baru saja Anda clone pada path `DEBlitz/compose_file/airflow/` ke dalam folder baru tadi yang berada di local computer (folder "project-m3").
+3. Pada path `DEBlitz/compose_file/airflow/`, copy 2 buah file yaitu `.env` dan `airflow_ES.yaml` ke dalam folder baru tadi yang berada di local computer (folder `project-m3`) sehingga struktur folder `project-m3` akan menjadi
+   ```
+   project-m3
+   |
+   ├── .env
+   ├── airflow_ES.yaml
+   ```
 
 4. Ubah sintaks pada docker compose `airflow_ES.yaml` agar data yang dimasukkan ke dalam PostgreSQL dapat dibuka dilain waktu.
   
@@ -23,12 +29,6 @@ Step by step pengerjaan Milestone 3 :
        container_name: postgres
        ports:
          - "5434:5432"
-       healthcheck:
-         test: ["CMD", "pg_isready", "-U", "airflow"]
-         interval: 5s
-         retries: 5
-       env_file:
-         - .env
    ```
 
    *AFTER*
@@ -41,15 +41,10 @@ Step by step pengerjaan Milestone 3 :
          - ./postgres_project_m3:/var/lib/postgresql/data
        ports:
          - "5434:5432"
-       healthcheck:
-         test: ["CMD", "pg_isready", "-U", "airflow"]
-         interval: 5s
-         retries: 5
-       env_file:
-         - .env
    ```
+5. Ubah versi Elasticsearch dan juga Kibana ke versi `7.13.0`. Anda dapat mengecek caranya pada poin `B.3` pada [link](https://github.com/danupurnomo/lecture-notes/blob/main/elastic-kibana-notes.md).
 
-5. Perhatikan bagian `x-common` pada Docker Compose.
+6. Perhatikan bagian `x-common` pada Docker Compose.
    ```
    x-common:
      &common
@@ -76,11 +71,13 @@ Step by step pengerjaan Milestone 3 :
    ├── /plugins
    ```
 
-6. Buka Terminal atau Commad Prompt. Jalankan docker compose `airflow_ES.yaml` yang terletak di folder `project-m3`.
+7. Open Docker Desktop.
 
-7. Masukkan `raw_data.csv` ke dalam PostgreSQL. Silakan buat sintaks DDL & DML-nya.
+8. Buka Terminal atau Commad Prompt. Jalankan docker compose `airflow_ES.yaml` yang terletak di folder `project-m3`.
 
-8. Untuk mengakses suatu service baik dari sisi user (developer) maupun dari sisi service lain, silakan buka `airflow_ES.yaml`. Perhatikan bagian `services`
+9. Masukkan `raw_data.csv` ke dalam PostgreSQL yang berasal dari Docker. Silakan buat sintaks DDL & DML-nya.
+
+10. Untuk mengakses suatu service baik dari sisi user (developer) maupun dari sisi service lain, silakan buka `airflow_ES.yaml`. Perhatikan bagian `services`
     * Contoh dibawah ini adalah bagian `postgres`
       ```
       postgres:
