@@ -75,7 +75,9 @@ Step by step pengerjaan Milestone 3 :
 
 8. Buka Terminal atau Commad Prompt. Jalankan docker compose `airflow_ES.yaml` yang terletak di folder `project-m3`.
 
-9. Masukkan `raw_data.csv` ke dalam PostgreSQL yang berasal dari Docker. Silakan buat sintaks DDL & DML-nya.
+9. Masukkan `raw_data.csv` ke dalam PostgreSQL yang berasal dari Docker. 
+    - Secara default, PostgreSQL yang dijalankan via Docker ini sudah terdapat beberapa tabel seperti gambar dibawah ini. ![plot](Default%20PostgreSQL%20Tables.png).
+    - Buat table baru yaitu `table_m3` untuk menampung `raw_data.csv`. Silakan buat sintaks DDL & DML-nya.
 
 10. Untuk mengakses suatu service baik dari sisi user (developer) maupun dari sisi service lain, silakan buka `airflow_ES.yaml`. Perhatikan bagian `services`
     * Contoh dibawah ini adalah bagian `postgres`
